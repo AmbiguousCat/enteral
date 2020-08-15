@@ -610,6 +610,7 @@
             this.rateOutput.TabIndex = 6;
             this.rateOutput.Text = "####";
             this.rateOutput.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rateOutput.Click += new System.EventHandler(this.rateOutput_Click);
             // 
             // label3
             // 

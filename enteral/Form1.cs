@@ -119,9 +119,12 @@ namespace enteral
                 }
                 rate = this.patientData.getTimeBlocks(start, stop, blockNumber, i);
 
+                Timeline[i].BackColor = Color.LightGray;
+
                 if (rate == 0)
                 {
                     Timeline[i].Text = timestring + "\nMissed";
+                    Timeline[i].BackColor = Color.Pink;
                 }
                 else if (rate == -1)
                 {
@@ -496,7 +499,11 @@ namespace enteral
                 int previousRate = (int)this.patientData.get_feed_rate_ml();
                 int newRateInt = Int32.Parse(newRate.Text);
 
-                this.patientData.setTime(index-1, previousRate, newRateInt, true);
+                bool missed = false;
+                if (newRateInt == 0)
+                    missed = true;
+
+                this.patientData.setTime(index-1, previousRate, newRateInt, missed);
                 
 
                 sync_ui();
@@ -623,6 +630,11 @@ namespace enteral
         private void Timeline24_Click(object sender, EventArgs e)
         {
             changeRate(24);
+        }
+
+        private void rateOutput_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

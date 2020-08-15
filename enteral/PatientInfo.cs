@@ -311,7 +311,7 @@ namespace enteral
                 if (time == null || time.written == false) {
                     break;
                 }
-                if (time.missed) {
+                if (time.feedRate == 0) {
                     hours_missed++;
                 }
             }
